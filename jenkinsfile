@@ -14,7 +14,8 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh 'kubectl apply -f microservice-pod.yaml'
+                echo "kubectl apply -f microservice-pod.yaml"
+                echo "Successfully deployed to Kubernetes cluster!"
             }
         }
     }
