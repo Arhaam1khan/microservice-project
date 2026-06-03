@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
   - name: my-container
-    image: yourusername/microservice:v1
+    image: screw2perfect/microservice:v1
