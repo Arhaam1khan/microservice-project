@@ -1,23 +1,19 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout Code') {
+        stage('Build') {
             steps {
-                git url: 'https://github.com/Arhaam1khan/microservice-project.git', branch: 'main'
+                sh 'docker build -t screw2perfect/microservice:v1 .'
             }
         }
-        
-        stage('Build Docker Image') {
+        stage('Push to Docker Hub') {
             steps {
-                
-                sh 'docker build -t microservice-image:latest .'
+                sh 'docker login -u "screw2perfect" -p "@Klnh4&b2DH"' 
+                sh 'docker push screw2perfect/microservice:v1'
             }
         }
-        
         stage('Deploy to Kubernetes') {
             steps {
-                
                 sh 'kubectl apply -f microservice-pod.yaml'
             }
         }

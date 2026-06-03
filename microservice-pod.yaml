@@ -4,6 +4,5 @@ metadata:
   name: microservice-pod
 spec:
   containers:
-  - name: microservice-container
-    image: microservice-image:latest
-    imagePullPolicy: IfNotPresent
+  - name: my-container
+    image: yourusername/microservice:v1
