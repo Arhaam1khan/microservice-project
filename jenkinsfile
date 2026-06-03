@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git url: 'https://github.com/Arhaam1khan/microservice-project.git', branch: 'main'
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                
+                sh 'docker build -t microservice-image:latest .'
+            }
+        }
+        
+        stage('Deploy to Kubernetes') {
+            steps {
+                
+                sh 'kubectl apply -f microservice-pod.yaml'
+            }
+        }
+    }
+}
